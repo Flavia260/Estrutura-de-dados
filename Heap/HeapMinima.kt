@@ -1,3 +1,5 @@
+package Heap
+
 class HeapMinima (private val tamanho : Int = 10) : Amontoavel {
     private var ponteiroFim = -1
     private var dados = LongArray (tamanho) {0}

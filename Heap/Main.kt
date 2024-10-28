@@ -1,3 +1,5 @@
+package Heap
+
 class Main {
     fun main() {
         var heap: Amontoavel = HeapMinima(10)

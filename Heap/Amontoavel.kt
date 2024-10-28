@@ -1,3 +1,5 @@
+package Heap
+
 interface Amontoavel {
     fun inserir (dado : Long)
     fun remover () : Long?
