@@ -1,0 +1,4 @@
+package PilhaDinamica
+
+interface EmpilhavelDinamica {
+}
