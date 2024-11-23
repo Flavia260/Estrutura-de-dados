@@ -8,7 +8,10 @@ class FilaDinamica (private val tamanho : Int): Enfileravel {
     override fun enfileirar(dado: Any?) {
         if (!estaCheia()){
             val novoNo = NoDuplo(dado)
-            ponteiroFim?.proximo = novoNo
+            if (ponteiroFim != null)
+                ponteiroFim?.proximo = novoNo
+            else// ponteiro fim nulo
+                ponteiroInicio = novoNo
             novoNo.anterior = ponteiroFim
             ponteiroFim = novoNo
             quantidade++
