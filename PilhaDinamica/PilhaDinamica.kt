@@ -1,64 +1,68 @@
 package PilhaDinamica
 
-class PilhaDinamica (private val tamanho : Int = 10) {
-    private var qnt = 0
-    private var ponteiroTopo : NoDuplo ? = null
+import NoDuplo.Empilhavel
+import NoDuplo.NoDuplo
 
-    fun empilhar (dado: Any){
+class PilhaDinamica (var tamanho: Int) : Empilhavel {
+    private var ponteiroTopo: NoDuplo? = null
+    private var quantidade = 0
+    // Metodos principais
+    override fun empilhar(dado: Any?) {
         if (!estaCheia()){
-            var noTemp : NoDuplo(dado)
-            noTemp.anterior = ponteiroTopo
+            val novoNo = NoDuplo (dado)
             if (!estaVazia())
-                ponteiroTopo?.proximo = noTemp
-            ponteiroTopo = noTemp
-            qnt = qnt++
-        }else{
-            println("A pilha está cheia")
+                ponteiroTopo?.proximo = novoNo
+            novoNo.anterior = ponteiroTopo
+            ponteiroTopo = novoNo
+            quantidade++
         }
     }
-    fun desempilhar (): Any? {
-        var dadotopo: Any? = null
-        if (!estaVazia()) {
-            var dadoTopo = ponteiroTopo?.dado
+    override fun desempilhar(): Any? {
+        var dadoAux : Any? = null
+        if (!estaVazia()){
+            dadoAux = ponteiroTopo?.dado
             ponteiroTopo = ponteiroTopo?.anterior
-            qnt = qnt--
-            if (!estaCheia())
-                ponteiroTopo?.proximo = null
-        } else {
-            println("A pilha esta vazia")
+            ponteiroTopo?.proximo = null
+            quantidade--
+        }else{
+            println("Pilha vazia")
         }
-        return dadotopo
+        return dadoAux
     }
-    fun estaCheia (): Boolean{
-        return qnt == tamanho
+    override fun espiar(): Any?{
+        var dadoAux : Any? = null
+        if (!estaVazia()){
+            dadoAux = ponteiroTopo?.dado
+        }else{
+            println("Pilha Vazia")
+        }
+        return dadoAux
     }
-    fun estaVazia (): Boolean {
-        return qnt == 0
+    override fun atualizar(dado: Any?){
+        if (!estaVazia()){
+            ponteiroTopo?.dado = dado
+        }else{
+            println("Esta vazia")
+        }
     }
-    fun imprimir (): String{
+    // Metodos auxiliares
+    override fun estaCheia(): Boolean {
+        return quantidade == tamanho
+    }
+    override fun estaVazia(): Boolean {
+        return quantidade == 0
+    }
+    override fun imprimir(): String {
         var aux = ponteiroTopo
-        var resultado = "["
-        for (i in 0 until qnt){
-            resultado += "${aux?.dado}"
-            if (i != qnt - 1)
-                resultado += ","
+        var retorno = "["
+        while (aux?.anterior != null) {
+            retorno += aux?.dado
             aux = aux?.anterior
         }
-        return "$resultado"
+        // partir topo
+        // descendo
+        return "$retorno]"
     }
 
-    fun olhar (): Any?{
-        var topo : Any? = null
-        if (!estaVazia())
-            topo = ponteiroTopo?.dado
-        else
-            println("A pilha está vazia")
-        return topo
-    }
-    fun atualizar (dado: Any){
-        if (!estaVazia())
-            ponteiroTopo?.dado = dado
-        else
-            println("A pilha está vazia")
-    }
+
 }
