@@ -1,9 +1,6 @@
 package PilhaDinamica
 
-import NoDuplo.Empilhavel
-import NoDuplo.NoDuplo
-
-class PilhaDinamica (var tamanho: Int) : Empilhavel {
+class PilhaDinamica (var tamanho: Int) : EmpilhavelDinamica {
     private var ponteiroTopo: NoDuplo? = null
     private var quantidade = 0
     // Metodos principais
