@@ -1,6 +1,6 @@
 package PilhaDinamica
 
-class PilhaDinamica (var tamanho: Int) : EmpilhavelDinamica {
+class PilhaDinamica (private var tamanho: Int) : EmpilhavelDinamica {
     private var ponteiroTopo: NoDuplo? = null
     private var quantidade = 0
     // Metodos principais
@@ -53,8 +53,8 @@ class PilhaDinamica (var tamanho: Int) : EmpilhavelDinamica {
         var aux = ponteiroTopo
         var retorno = "["
         while (aux?.anterior != null) {
-            retorno += aux?.dado
-            aux = aux?.anterior
+            retorno += aux.dado
+            aux = aux.anterior
         }
         // partir topo
         // descendo
