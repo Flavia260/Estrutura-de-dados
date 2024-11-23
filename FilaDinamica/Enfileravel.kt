@@ -1,0 +1,4 @@
+package FilaDinamica
+
+interface Enfileravel {
+}
