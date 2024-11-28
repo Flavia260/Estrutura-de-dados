@@ -59,9 +59,13 @@ class FilaDinamica (private val tamanho : Int): Enfileravel {
         var retorno = "["
         var aux = ponteiroInicio
         for (i in 0 until quantidade){
-            retorno += aux?.dado
-            aux =
+             retorno += "${aux?.dado}"
+            if (i != quantidade-1)
+                retorno += ","
+
+             aux = aux?.proximo
         }
-        return aux
+        return "$retorno]"
+        }
+
     }
-}
