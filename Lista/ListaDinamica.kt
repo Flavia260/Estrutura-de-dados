@@ -6,7 +6,24 @@ class ListaDinamica (val tamaho: Int) : Listavel {
     private  var inicio: NoDuplo?
 
     override fun inserir(dado: Any?, posicao: Int) {
-
+        if (!estaCheia()) {
+            if (posicao >= 0 && posicao <= qnt) {
+                var aux = inicio
+                for (i in 0 until posicao) {
+                    aux = aux?.proximo
+                }
+                var novoNo = NoDuplo (dado)
+                var pro = aux
+                var ant = aux?.anterior
+                ant?.proximo = novoNo
+                pro?.anterior = novoNo
+                novoNo?.anterior = ant
+                novoNo?.proximo = pro
+                qnt++
+            } else
+                throw IndexOutOfBoundsException("Posição invalida")
+        }else{
+            throw NoSuchElementException ("Lista Vazia")}
     }
 
     override fun apagar(posicao: Int): Any? {
