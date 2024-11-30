@@ -15,7 +15,10 @@ class ListaDinamica (val tamaho: Int) : Listavel {
                 var novoNo = NoDuplo (dado)
                 var pro = aux
                 var ant = aux?.anterior
-                ant?.proximo = novoNo
+                if (ant!= null)//inserção no meio ou fim
+                    ant?.proximo = novoNo
+                else//incerção no inicio
+                    inicio = novoNo
                 pro?.anterior = novoNo
                 novoNo?.anterior = ant
                 novoNo?.proximo = pro
