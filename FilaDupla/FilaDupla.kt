@@ -23,14 +23,31 @@ class FilaDupla (private val tamanho : Int = 10) : EnfileiravelDupla {
         }
     }
 
+    override fun imprimirTrasPraFrente(): String {
+        var aux ="["
+        var fim = ponteiroFim
+        for (i in  qnt-1 downTo 0){
+            if (i == qnt-1){
+                aux += "$dados[fim]"
+            }else{
+                aux += "$dados[fim]"
+            }
+            fim++
+        }
+        if (fim == dados?.size){
+            fim = 0
+        }
+        return "$fim]8"
+    }
+
     override fun imprimirFrentePraTras() : String{
         var aux = "["
         var inicio = ponteiroInicio
         for (i in 0 .. qnt -1){
             if (qnt == -1){
-                aux += "${dados?.get(inicio)}"
+                aux += "$dados[inicio]"
             }else{
-                aux += "${dados?.get(inicio)}"
+                aux += "$dados[inicio]"
             }
             inicio++
             if (inicio == dados?.size){
