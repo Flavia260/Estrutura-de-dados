@@ -6,6 +6,23 @@ class FilaDupla (private val tamanho : Int = 10) : EnfileiravelDupla {
     private var qnt = 0
     private var dados : Array<Any>? = ArrayOfNulls(tamanho)
 
+    override fun atualizarFim(dado: Any?) {
+        if (!estaVazia()){
+            dados[ponteiroFim] = dado
+        }else{
+            throw NoSuchElementException ("Lista Vazia")
+        }
+    }
+
+    override fun atualizarInicio(dado: Any?) {
+        if (!estaVazia()){
+            dados[ponteiroInicio] = dado
+        }
+        else{
+            throw NoSuchElementException ("Lista Vazia")
+        }
+    }
+
     override fun imprimirFrentePraTras() : String{
         var aux = "["
         var inicio = ponteiroInicio
@@ -21,6 +38,16 @@ class FilaDupla (private val tamanho : Int = 10) : EnfileiravelDupla {
             }
         }
         return "$aux]"
+    }
+
+    override fun tras(): Any? {
+        var aux : Any? = null
+        if (!estaVazia()){
+            aux= dados[ponteiroFim]
+        }
+        else{
+            throw NoSuchElementException ("Lista vazia")
+        }
     }
 
     override fun frente(): Any? {
