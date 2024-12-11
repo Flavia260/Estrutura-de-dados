@@ -1,9 +1,10 @@
 package Projeto
 
 data class Produto (
-    var nome: String
+    var nomeProduto: String
     var categoria: String
     var preco: Double
     var tamanho: String
-    var quantidadeEstoque: Int
+    var cor : String
+    var qntdEstoque: Int
 )
